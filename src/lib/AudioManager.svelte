@@ -3,29 +3,25 @@
   import AudioDataBar from "./AudioDataBar.svelte";
   import AudioPlayer from "./AudioPlayer.svelte";
   import FileTile from "./FileTile.svelte";
-  import type { Transcriber } from "./hooks/useTranscriber.svelte";
   import Progress from "./Progress.svelte";
   import RecordTile from "./RecordTile.svelte";
   import TranscribeButton from "./TranscribeButton.svelte";
   import UrlTile from "./UrlTile.svelte";
   import Constants from "./utils/Constants";
   import SettingsTile from "./SettingsTile.svelte";
+  import {
+    AudioSource,
+    isBusy,
+    isModelLoading,
+    onInputChange,
+    postRequest,
+    progressItems,
+    transcript,
+    type AudioData,
+  } from "./hooks/transcriber.svelte";
 
-  enum AudioSource {
-    URL = "URL",
-    FILE = "FILE",
-    RECORDING = "RECORDING",
-  }
-  let props: { transcriber: Transcriber } = $props();
   let progress: number | undefined = $state(undefined);
-  let audioData:
-    | {
-        buffer: AudioBuffer;
-        url: string;
-        source: AudioSource;
-        mimeType: string;
-      }
-    | undefined = $state(undefined);
+  let audioData: AudioData = $state(undefined);
   let audioDownloadUrl: string | undefined = $state(undefined);
 
   let isAudioLoading = $derived(progress !== undefined);
@@ -98,7 +94,7 @@
         }
         setAudioFromDownload(data, mimeType);
       } catch (error) {
-        console.log("Request failed or aborted", error);
+        console.error("Request failed or aborted", error);
       } finally {
         progress = undefined;
       }
@@ -140,7 +136,7 @@
       icon={AnchorIcon}
       text={"From URL"}
       onUrlUpdate={(e) => {
-        props.transcriber.onInputChange();
+        onInputChange($transcript);
         audioDownloadUrl = e;
       }}
     />
@@ -149,7 +145,7 @@
       icon={FolderIcon}
       text={"From file"}
       onFileUpdate={(decoded, blobUrl, mimeType) => {
-        props.transcriber.onInputChange();
+        onInputChange($transcript);
         audioData = {
           buffer: decoded,
           url: blobUrl,
@@ -164,7 +160,7 @@
         icon={MicrophoneIcon}
         text={"Record"}
         setAudioData={(e) => {
-          props.transcriber.onInputChange();
+          onInputChange($transcript);
           setAudioFromRecording(e);
         }}
       />
@@ -179,24 +175,19 @@
   <div class="relative w-full flex justify-center items-center">
     <TranscribeButton
       onclick={() => {
-        props.transcriber.start(audioData?.buffer);
+        postRequest(audioData?.buffer);
       }}
-      isModelLoading={props.transcriber.isModelLoading}
-      isTranscribing={props.transcriber.isBusy}
+      isModelLoading={$isModelLoading}
+      isTranscribing={$isBusy}
     />
 
-    <SettingsTile
-      class="absolute right-4"
-      transcriber={props.transcriber}
-      icon={SettingsIcon}
-    />
+    <SettingsTile class="absolute right-4" icon={SettingsIcon} />
   </div>
-  {#if props.transcriber.progressItems.length > 0}
+  {#if $progressItems.length > 0}
     <div class="relative z-10 p-4 w-full">
       <span>Loading model files... (only run once)</span>
-      {#each props.transcriber.progressItems as data}
+      {#each $progressItems as data}
         <div>
-          {console.log(data)}
           <Progress text={data.file} percentage={data.progress} />
         </div>
       {/each}

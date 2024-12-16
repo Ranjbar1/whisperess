@@ -6,9 +6,9 @@
     isTranscribing: boolean;
   }
   let {
-    isModelLoading,
-    isTranscribing,
-    onclick: onClick,
+    isModelLoading = $bindable(false),
+    isTranscribing = $bindable(false),
+    onclick,
     ...buttonProps
   }: Props = $props();
 </script>
@@ -16,8 +16,8 @@
 <button
   {...buttonProps}
   onclick={(event) => {
-    if (onClick && !isTranscribing && !isModelLoading) {
-      onClick(event);
+    if (onclick && !isTranscribing && !isModelLoading) {
+      onclick(event);
     }
   }}
   disabled={isTranscribing}

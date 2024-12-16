@@ -4,8 +4,7 @@ export interface MessageEventHandler {
 
 export function useWorker(messageEventHandler: MessageEventHandler): Worker {
   // Create new worker once and never again
-  let init = () => createWorker(messageEventHandler);
-  let worker = $state(init());
+  let worker = $state(createWorker(messageEventHandler));
   return worker;
 }
 

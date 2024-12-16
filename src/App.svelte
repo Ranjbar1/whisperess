@@ -1,8 +1,6 @@
 <script lang="ts">
   import AudioManager from "./lib/AudioManager.svelte";
-  import { useTranscriber } from "./lib/hooks/useTranscriber.svelte";
   import Transcript from "./lib/Transcript.svelte";
-  let transcriber = useTranscriber();
 </script>
 
 <main>
@@ -18,8 +16,8 @@
       >
         ML-powered speech recognition directly in your browser
       </h2>
-      <AudioManager {transcriber} />
-      <Transcript transcribedData={transcriber.output} />
+      <AudioManager />
+      <Transcript />
     </div>
 
     <div class="absolute bottom-4">

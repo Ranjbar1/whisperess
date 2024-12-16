@@ -29,7 +29,7 @@
   let mediaRecorderRef: MediaRecorder | null = null;
   let chunksRef: Blob[] = [];
 
-  let audioRef: HTMLAudioElement | null = null;
+  let audioRef: HTMLAudioElement | null = $state(null);
 
   const startRecording = async () => {
     // Reset recording (if any)
