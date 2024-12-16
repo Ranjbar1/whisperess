@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Component, Snippet } from "svelte";
-  import { fade } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
 
   export interface Props {
     show: boolean;
@@ -28,6 +28,7 @@
 <dialog
   bind:this={dialog}
   open={show}
+  transition:fly={{ duration: 2000 }}
   class="relative z-10"
   onclose={() => (show = false)}
   onclick={(e) => {
@@ -35,8 +36,10 @@
   }}
 >
   <div class="fixed inset-0 bg-black bg-opacity-25"></div>
-  <div class="fixed inset-0 overflow-y-auto">
-    <div class="flex min-h-full items-center justify-center p-4 text-center">
+  <div class="fixed inset-0 bg-slate-100 overflow-y-auto">
+    <div
+      class="flex flex-col min-h-full items-center justify-center p-4 text-center"
+    >
       <h1>{title}</h1>
       <div class="mt-3 text-sm text-gray-500">
         {@render children?.()}

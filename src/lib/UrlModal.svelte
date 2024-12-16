@@ -26,6 +26,7 @@ let url = $state(Constants.DEFAULT_AUDIO_URL);
             onClose={props.onClose}
             submitText={"Load"}
             onSubmit={onSubmit}
-        >   "Enter the URL of the audio file you want to load."
+        > 
+          "Enter the URL of the audio file you want to load."
         <UrlInput  onChange={onChange} value={url} />
      </Modal>
