@@ -24,4 +24,4 @@
 </script>
 
 <Tile icon={props.icon} text={props.text} {onClick} />
-<UrlModal show={showModal} {onSubmit} {onClose} />
+<UrlModal  show={showModal} {onSubmit} {onClose} />

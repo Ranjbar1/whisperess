@@ -19,6 +19,7 @@
     transcript,
     type AudioData,
   } from "./hooks/transcriber.svelte";
+  import { fade } from "svelte/transition";
 
   let progress: number | undefined = $state(undefined);
   let audioData: AudioData = $state(undefined);
@@ -113,21 +114,6 @@
   });
 </script>
 
-{#snippet AnchorIcon()}
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
-    />
-  </svg>
-{/snippet}
-{#snippet VerticalBar()}
-  <div class="w-[1px] bg-slate-200"></div>
-{/snippet}
 <div
   class="flex flex-col justify-center items-center rounded-lg bg-white shadow-xl shadow-black/5 ring-1 ring-slate-700/10"
 >
@@ -184,10 +170,10 @@
     <SettingsTile class="absolute right-4" icon={SettingsIcon} />
   </div>
   {#if $progressItems.length > 0}
-    <div class="relative z-10 p-4 w-full">
+    <div class="relative p-4 w-full">
       <span>Loading model files... (only run once)</span>
       {#each $progressItems as data}
-        <div>
+        <div transition:fade|global>
           <Progress text={data.file} percentage={data.progress} />
         </div>
       {/each}
@@ -233,4 +219,19 @@
       d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"
     />
   </svg>
+{/snippet}
+{#snippet AnchorIcon()}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
+    />
+  </svg>
+{/snippet}
+{#snippet VerticalBar()}
+  <div class="w-[1px] bg-slate-200"></div>
 {/snippet}

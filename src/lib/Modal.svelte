@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Component, Snippet } from "svelte";
-  import { fade, fly } from "svelte/transition";
+  import { fly } from "svelte/transition";
 
   export interface Props {
     show: boolean;
@@ -20,7 +20,7 @@
     submitText,
     submitEnabled = true,
   }: Props = $props();
-  let dialog = $state();
+  let dialog = $state<HTMLDialogElement>();
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
@@ -32,13 +32,13 @@
   class="relative z-10"
   onclose={() => (show = false)}
   onclick={(e) => {
-    if (e.target === dialog) (dialog as HTMLDialogElement).close();
+    if (e.target === dialog) dialog.close();
   }}
 >
   <div class="fixed inset-0 bg-black bg-opacity-25"></div>
   <div class="fixed inset-0 bg-slate-100 overflow-y-auto">
     <div
-      class="flex flex-col min-h-full items-center justify-center p-4 text-center"
+      class="flex flex-col min-h-full items-center justify-center p-4 text-center gap-5"
     >
       <h1>{title}</h1>
       <div class="mt-3 text-sm text-gray-500">

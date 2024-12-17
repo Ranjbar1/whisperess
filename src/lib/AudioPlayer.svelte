@@ -15,11 +15,11 @@
   });
 </script>
 
-<div class="flex relative z-10 p-4 w-full">
+<div class="flex relative p-4 w-full">
   <audio
     bind:this={audioPlayer}
     controls
-    class="w-full h-14 rounded-lg bg-white shadow-xl shadow-black/5 ring-1 ring-slate-700/10"
+    class="w-full h-14 rounded-lg bg-white shadow-xl ring-1 ring-slate-700/10"
   >
     <source bind:this={audioSource} type={props.mimeType} />
   </audio>
