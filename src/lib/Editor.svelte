@@ -1,9 +1,19 @@
 <script lang="ts">
   import Quill, { Delta, type QuillOptions } from "quill";
+  import { transcript } from "./hooks/transcriber.svelte";
   import "quill/dist/quill.snow.css";
+
   import { onMount } from "svelte";
-  let { text } = $props();
-  let quill;
+  import { exportTXT } from "./utils/FileUtils";
+  let transcribedData = $derived($transcript);
+  let chunks = $derived(transcribedData?.chunks ?? []);
+  let text = $derived.by(() =>
+    chunks
+      .map((chunk) => chunk.text)
+      .join("")
+      .trim()
+  );
+  let quill: Quill;
   let delta;
   let editorOptions: QuillOptions = {
     theme: "snow",
@@ -38,7 +48,8 @@
   });
 </script>
 
-<div id="toolbar" class="rounded-2xl"></div>
-<div id="editor" class="rounded-3xl"></div>
-
-<button>asd</button>
+<div class="container flex flex-col justify-center items-center gap-4">
+  <div id="toolbar"></div>
+  <div id="editor"></div>
+  <button></button>
+</div>

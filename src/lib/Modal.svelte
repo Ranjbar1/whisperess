@@ -35,13 +35,14 @@
     if (e.target === dialog) dialog.close();
   }}
 >
-  <div class="fixed inset-0 bg-black bg-opacity-25"></div>
-  <div class="fixed inset-0 bg-slate-100 overflow-y-auto">
+  <div
+    class="fixed inset-0 min-h-full flex flex-col items-center justify-center backdrop-blur-sm bg-gray-100/50 overflow-y-auto"
+  >
     <div
-      class="flex flex-col min-h-full items-center justify-center p-4 text-center gap-5"
+      class=" bg-slate-200 rounded-md h-[40dvh] p-10 border-slate-400 border text-center flex flex-col gap-5"
     >
       <h1>{title}</h1>
-      <div class="mt-3 text-sm text-gray-500">
+      <div class="mt-3 text-sm text-gray-500 flex-1">
         {@render children?.()}
       </div>
 

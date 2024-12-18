@@ -5,8 +5,8 @@
 </script>
 
 <main>
-  <div class="flex justify-center items-center min-h-[100dvh]">
-    <div class="container flex flex-col justify-center items-center gap-4">
+  <div class="container flex justify-center items-center min-h-[100dvh]">
+    <div class=" flex flex-col justify-center items-center gap-4">
       <h1
         class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl text-center"
       >
