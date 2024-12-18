@@ -1,76 +1,91 @@
 {
-  "short_name": "Say",
-  "name": "Say: Transcription app",
+  "short_name": "Whisperess",
+  "name": "Whisperess: ML-powered Audio Transcription in your browser",
   "icons": [
     {
-      "src": "/icon.svg",
-      "type": "image/svg+xml",
-      "sizes": "512x512"
+      "purpose": "maskable",
+      "sizes": "96x96",
+      "src": "icons/maskable_icon_x96.png",
+      "type": "image/png"
     },
     {
-      "src": "/icon128.png",
-      "type": "image/png",
-      "sizes": "128x128"
+      "purpose": "maskable",
+      "sizes": "192x192",
+      "src": "icons/maskable_icon_x192.png",
+      "type": "image/png"
     },
     {
-      "src": "/icon48.png",
-      "type": "image/png",
-      "sizes": "48x48"
+      "sizes": "192x192",
+      "src": "icons/maskable_icon_x192.png",
+      "type": "image/png"
     },
     {
-      "src": "/icon16.png",
-      "type": "image/png",
-      "sizes": "16x16"
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "icons/maskable_icon_x512.png",
+      "type": "image/png"
     }
   ],
   "id": "/?source=pwa",
   "start_url": "/?source=pwa",
-  "background_color": "#1e293b",
+  "background_color": "#52c1d7",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#ffffff",
+  "theme_color": "#2563eb",
   "description": "Easily record and transcribe your audio files into text using AI. Free, private, and local.",
   "screenshots": [
     {
-      "src": "/screenshot-01@1x.jpg",
-      "type": "image/jpg",
-      "sizes": "1200x628",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshot-02@1x.jpg",
-      "type": "image/jpg",
-      "sizes": "1200x628",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshot-03@1x.jpg",
-      "type": "image/jpg",
-      "sizes": "1200x628",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshot-04@1x.jpg",
-      "type": "image/jpg",
-      "sizes": "1200x628",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshot-mobile@1x.jpg",
+      "src": "screenshots/screen-1.png",
       "type": "image/png",
-      "sizes": "1170x2532",
+      "sizes": "1920x1080",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshots/screen-2.png",
+      "type": "image/png",
+      "sizes": "1920x1080",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshots/screen-3.png",
+      "type": "image/png",
+      "sizes": "1920x1080",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshots/screen-4.png",
+      "type": "image/png",
+      "sizes": "1920x1080",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshots/screen-5.png",
+      "type": "image/png",
+      "sizes": "1920x1080",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshots/screen-sm-1.png",
+      "type": "image/png",
+      "sizes": "1290x2796",
       "form_factor": "narrow"
     },
     {
-      "src": "/screenshot-mobile-2@1x.jpg",
+      "src": "screenshots/screen-sm-2.png",
       "type": "image/png",
-      "sizes": "1170x2532",
+      "sizes": "1290x2796",
       "form_factor": "narrow"
     },
     {
-      "src": "/screenshot-mobile-3@1x.jpg",
+      "src": "screenshots/screen-sm-3.png",
       "type": "image/png",
-      "sizes": "1170x2532",
+      "sizes": "1290x2796",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshots/screen-sm-4.png",
+      "type": "image/png",
+      "sizes": "1290x2796",
       "form_factor": "narrow"
     }
   ]

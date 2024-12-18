@@ -170,7 +170,7 @@
     <SettingsTile class="absolute right-4" icon={SettingsIcon} />
   </div>
   {#if $progressItems.length > 0}
-    <div class="relative p-4 w-full">
+    <div class="relative space-y-2 p-4 w-full">
       <span>Loading model files... (only run once)</span>
       {#each $progressItems as data}
         <div transition:fade|global>

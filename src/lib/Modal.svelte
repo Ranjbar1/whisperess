@@ -36,12 +36,12 @@
   }}
 >
   <div
-    class="fixed inset-0 min-h-full flex flex-col items-center justify-center backdrop-blur-sm bg-gray-100/50 overflow-y-auto"
+    class="fixed inset-0 min-h-[40dvh] flex flex-col items-center justify-center backdrop-blur-sm bg-gray-100/50 overflow-y-auto"
   >
     <div
-      class=" bg-slate-200 rounded-md h-[40dvh] p-10 border-slate-400 border text-center flex flex-col gap-5"
+      class=" bg-slate-200 rounded-md p-10 border-slate-400 border text-center flex flex-col gap-5"
     >
-      <h1>{title}</h1>
+      <h1 class="text-2xl">{title}</h1>
       <div class="mt-3 text-sm text-gray-500 flex-1">
         {@render children?.()}
       </div>

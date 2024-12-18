@@ -11,7 +11,7 @@
 <button
   onclick={props.onClick}
   class="flex items-center justify-center rounded-lg
-  p-1 sm:p-2 bg-blue text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 hover:scale-105 transition-all duration-200"
+  p-1 sm:p-2 bg-white text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 hover:scale-105 transition-all duration-200"
 >
   <div class="w-7 h-7">{@render props.icon()}</div>
   {#if props.text}

@@ -1,10 +1,9 @@
 <script lang="ts">
   import Quill, { Delta, type QuillOptions } from "quill";
-  import { transcript } from "./hooks/transcriber.svelte";
   import "quill/dist/quill.snow.css";
+  import { transcript } from "./hooks/transcriber.svelte";
 
   import { onMount } from "svelte";
-  import { exportTXT } from "./utils/FileUtils";
   let transcribedData = $derived($transcript);
   let chunks = $derived(transcribedData?.chunks ?? []);
   let text = $derived.by(() =>

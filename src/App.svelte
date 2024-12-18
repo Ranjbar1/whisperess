@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { fly } from "svelte/transition";
   import AudioManager from "./lib/AudioManager.svelte";
   import Transcript from "./lib/Transcript.svelte";
 </script>
 
-<main>
+<main class="bg-gradient">
   <div class="container flex justify-center items-center min-h-[100dvh]">
     <div class=" flex flex-col justify-center items-center gap-4">
       <h1
