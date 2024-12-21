@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Component, Snippet } from 'svelte';
-	import { fly } from 'svelte/transition';
+	import { fly, scale } from 'svelte/transition';
 
 	export interface Props {
 		show: boolean;
@@ -28,50 +28,52 @@
 <dialog
 	bind:this={dialog}
 	open={show}
-	transition:fly={{ duration: 2000 }}
 	class="relative z-10"
 	onclose={() => (show = false)}
 	onclick={(e) => {
 		if (e.target === dialog) dialog.close();
 	}}
 >
-	<div
-		class="fixed inset-0 flex min-h-[40dvh] flex-col items-center justify-center overflow-y-auto bg-gray-100/50 backdrop-blur-sm"
-	>
+	{#if show}
 		<div
-			class=" flex flex-col gap-5 rounded-md border border-slate-400 bg-slate-200 p-10 text-center"
+			class="  fixed inset-0 flex min-h-[40dvh] flex-col items-center justify-center overflow-y-auto bg-gray-100/50 backdrop-blur-sm"
 		>
-			<h1 class="text-2xl">{title}</h1>
-			<div class="mt-3 flex-1 text-sm text-gray-500">
-				{@render children?.()}
-			</div>
+			<div
+				transition:scale={{ duration: 500 }}
+				class=" flex flex-col gap-5 rounded-md border border-slate-400 bg-slate-200 p-10 text-center"
+			>
+				<h1 class="text-2xl">{title}</h1>
+				<div class="mt-3 flex-1 text-sm text-gray-500">
+					{@render children?.()}
+				</div>
 
-			<div class="mt-4 flex flex-row-reverse">
-				{#if submitText}
+				<div class="mt-4 flex flex-row-reverse">
+					{#if submitText}
+						<button
+							type="button"
+							disabled={!submitEnabled}
+							class={`ml-4 inline-flex justify-center rounded-md border border-transparent ${
+								submitEnabled ? 'bg-indigo-600' : 'bg-grey-300'
+							} px-4 py-2 text-sm font-medium text-indigo-100 ${
+								submitEnabled
+									? 'hover:bg-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2'
+									: ''
+							} transition-all duration-300`}
+							onclick={onSubmit}
+						>
+							{submitText}
+						</button>
+					{/if}
+
 					<button
 						type="button"
-						disabled={!submitEnabled}
-						class={`ml-4 inline-flex justify-center rounded-md border border-transparent ${
-							submitEnabled ? 'bg-indigo-600' : 'bg-grey-300'
-						} px-4 py-2 text-sm font-medium text-indigo-100 ${
-							submitEnabled
-								? 'hover:bg-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2'
-								: ''
-						} transition-all duration-300`}
-						onclick={onSubmit}
+						class="inline-flex justify-center rounded-md border border-transparent bg-indigo-100 px-4 py-2 text-sm font-medium text-indigo-900 transition-all duration-300 hover:bg-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+						onclick={onClose}
 					>
-						{submitText}
+						Close
 					</button>
-				{/if}
-
-				<button
-					type="button"
-					class="inline-flex justify-center rounded-md border border-transparent bg-indigo-100 px-4 py-2 text-sm font-medium text-indigo-900 transition-all duration-300 hover:bg-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-					onclick={onClose}
-				>
-					Close
-				</button>
+				</div>
 			</div>
 		</div>
-	</div>
+	{/if}
 </dialog>

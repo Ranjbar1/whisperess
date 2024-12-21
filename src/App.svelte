@@ -3,10 +3,11 @@
 	import AudioManager from './lib/AudioManager.svelte';
 	import StatusBar from './lib/StatusBar.svelte';
 	import Transcript from './lib/Transcript.svelte';
+	import SideBar from './lib/SideBar.svelte';
 </script>
 
-<StatusBar  />
-
+<StatusBar />
+<SideBar />
 <main transition:scale={{ duration: 1000 }} class="bg-gradient">
 	<div class="container flex min-h-[100dvh] items-center justify-center">
 		<div class=" flex flex-col items-center justify-center gap-4">
