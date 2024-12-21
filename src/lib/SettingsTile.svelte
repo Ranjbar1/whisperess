@@ -1,28 +1,28 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
-  import Tile from "./Tile.svelte";
-  import SettingsModal from "./SettingsModal.svelte";
+	import type { Snippet } from 'svelte';
+	import Tile from './Tile.svelte';
+	import SettingsModal from './SettingsModal.svelte';
 
-  let props: {
-    icon: Snippet;
-    class?: string;
-  } = $props();
-  let showModal = $state(false);
+	let props: {
+		icon: Snippet;
+		class?: string;
+	} = $props();
+	let showModal = $state(false);
 
-  const onClick = () => {
-    showModal = true;
-  };
+	const onClick = () => {
+		showModal = true;
+	};
 
-  const onClose = () => {
-    showModal = false;
-  };
+	const onClose = () => {
+		showModal = false;
+	};
 
-  const onSubmit = (url: string) => {
-    onClose();
-  };
+	const onSubmit = (url: string) => {
+		onClose();
+	};
 </script>
 
 <div class={props.class}>
-  <Tile icon={props.icon} {onClick} />
-  <SettingsModal show={showModal} {onSubmit} {onClose} />
+	<Tile icon={props.icon} {onClick} />
+	<SettingsModal show={showModal} {onSubmit} {onClose} />
 </div>

@@ -1,92 +1,92 @@
 {
-  "short_name": "Whisperess",
-  "name": "Whisperess: ML-powered Audio Transcription in your browser",
-  "icons": [
-    {
-      "purpose": "maskable",
-      "sizes": "96x96",
-      "src": "icons/maskable_icon_x96.png",
-      "type": "image/png"
-    },
-    {
-      "purpose": "maskable",
-      "sizes": "192x192",
-      "src": "icons/maskable_icon_x192.png",
-      "type": "image/png"
-    },
-    {
-      "sizes": "192x192",
-      "src": "icons/maskable_icon_x192.png",
-      "type": "image/png"
-    },
-    {
-      "purpose": "maskable",
-      "sizes": "512x512",
-      "src": "icons/maskable_icon_x512.png",
-      "type": "image/png"
-    }
-  ],
-  "id": "/?source=pwa",
-  "start_url": "/?source=pwa",
-  "background_color": "#52c1d7",
-  "display": "standalone",
-  "scope": "/",
-  "theme_color": "#2563eb",
-  "description": "Easily record and transcribe your audio files into text using AI. Free, private, and local.",
-  "screenshots": [
-    {
-      "src": "screenshots/screen-1.png",
-      "type": "image/png",
-      "sizes": "1920x1080",
-      "form_factor": "wide"
-    },
-    {
-      "src": "screenshots/screen-2.png",
-      "type": "image/png",
-      "sizes": "1920x1080",
-      "form_factor": "wide"
-    },
-    {
-      "src": "screenshots/screen-3.png",
-      "type": "image/png",
-      "sizes": "1920x1080",
-      "form_factor": "wide"
-    },
-    {
-      "src": "screenshots/screen-4.png",
-      "type": "image/png",
-      "sizes": "1920x1080",
-      "form_factor": "wide"
-    },
-    {
-      "src": "screenshots/screen-5.png",
-      "type": "image/png",
-      "sizes": "1920x1080",
-      "form_factor": "wide"
-    },
-    {
-      "src": "screenshots/screen-sm-1.png",
-      "type": "image/png",
-      "sizes": "1290x2796",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "screenshots/screen-sm-2.png",
-      "type": "image/png",
-      "sizes": "1290x2796",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "screenshots/screen-sm-3.png",
-      "type": "image/png",
-      "sizes": "1290x2796",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "screenshots/screen-sm-4.png",
-      "type": "image/png",
-      "sizes": "1290x2796",
-      "form_factor": "narrow"
-    }
-  ]
+	"short_name": "Whisperess",
+	"name": "Whisperess: ML-powered Audio Transcription in your browser",
+	"icons": [
+		{
+			"purpose": "maskable",
+			"sizes": "96x96",
+			"src": "icons/maskable_icon_x96.png",
+			"type": "image/png"
+		},
+		{
+			"purpose": "maskable",
+			"sizes": "192x192",
+			"src": "icons/maskable_icon_x192.png",
+			"type": "image/png"
+		},
+		{
+			"sizes": "192x192",
+			"src": "icons/maskable_icon_x192.png",
+			"type": "image/png"
+		},
+		{
+			"purpose": "maskable",
+			"sizes": "512x512",
+			"src": "icons/maskable_icon_x512.png",
+			"type": "image/png"
+		}
+	],
+	"id": "/?source=pwa",
+	"start_url": "/?source=pwa",
+	"background_color": "#52c1d7",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#2563eb",
+	"description": "Easily record and transcribe your audio files into text using AI. Free, private, and local.",
+	"screenshots": [
+		{
+			"src": "screenshots/screen-1.png",
+			"type": "image/png",
+			"sizes": "1920x1080",
+			"form_factor": "wide"
+		},
+		{
+			"src": "screenshots/screen-2.png",
+			"type": "image/png",
+			"sizes": "1920x1080",
+			"form_factor": "wide"
+		},
+		{
+			"src": "screenshots/screen-3.png",
+			"type": "image/png",
+			"sizes": "1920x1080",
+			"form_factor": "wide"
+		},
+		{
+			"src": "screenshots/screen-4.png",
+			"type": "image/png",
+			"sizes": "1920x1080",
+			"form_factor": "wide"
+		},
+		{
+			"src": "screenshots/screen-5.png",
+			"type": "image/png",
+			"sizes": "1920x1080",
+			"form_factor": "wide"
+		},
+		{
+			"src": "screenshots/screen-sm-1.png",
+			"type": "image/png",
+			"sizes": "1290x2796",
+			"form_factor": "narrow"
+		},
+		{
+			"src": "screenshots/screen-sm-2.png",
+			"type": "image/png",
+			"sizes": "1290x2796",
+			"form_factor": "narrow"
+		},
+		{
+			"src": "screenshots/screen-sm-3.png",
+			"type": "image/png",
+			"sizes": "1290x2796",
+			"form_factor": "narrow"
+		},
+		{
+			"src": "screenshots/screen-sm-4.png",
+			"type": "image/png",
+			"sizes": "1290x2796",
+			"form_factor": "narrow"
+		}
+	]
 }
