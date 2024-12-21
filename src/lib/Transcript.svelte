@@ -38,7 +38,7 @@
 
 <div
 	bind:this={view}
-	class="scrollbar my-2 flex max-h-[20rem] w-full flex-col overflow-y-auto p-4"
+	class="scrollbar my-2 flex max-h-[20rem] max-w-6xl flex-col overflow-y-auto p-4"
 >
 	{#if chunks}
 		{#each chunks as chunk}
@@ -77,7 +77,6 @@
 		<Editor />
 	</div>
 </Modal>
-<!-- {#if showEditor}{/if} -->
 
 {#snippet Button(text: string, action: () => void)}
 	<button

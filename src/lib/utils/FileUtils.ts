@@ -23,3 +23,4 @@ export const exportJSON = (chunks: TranscriberData['chunks']) => {
 	const blob = new Blob([jsonData], { type: 'application/json' });
 	saveBlob(blob, 'transcript.json');
 };
+
