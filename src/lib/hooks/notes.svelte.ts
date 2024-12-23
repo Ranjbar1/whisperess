@@ -1,5 +1,5 @@
 export type Note = {
-	id: string;
+	id: string | number;
 	title: string;
 	content: string;
 	createdAt: string;
@@ -12,14 +12,6 @@ export type Notes = {
 };
 
 export const notes = $state<Notes>({
-	items: [
-		{
-			content: 'asd',
-			title: 'asd',
-			id: 'asd',
-			createdAt: 'asd',
-			updatedAt: 'asd'
-		}
-	],
+	items: [],
 	showNotes: false
 });

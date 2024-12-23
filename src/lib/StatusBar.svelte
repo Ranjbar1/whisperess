@@ -11,14 +11,20 @@
 <header
 	class="absolute left-0 top-0 flex h-16 w-full flex-row items-center justify-between bg-slate-800 px-6 text-white md:px-10"
 >
-	<div class="space-x-2">
+	<div class="flex flex-row space-x-2">
 		<span>Whisperess</span>
-		<button
-			onclick={() => (notes.showNotes = !notes.showNotes)}
-			class=" rounded-sm bg-slate-700 p-0 text-sm transition-colors hover:bg-slate-600"
-		>
-			{notes.showNotes ? '🔽' : '🔼'}
-		</button>
+		<div class="relative">
+			<span
+				class=" absolute right-[-6px] top-[-2px] inline-block h-3 w-3 animate-bounce rounded-full bg-blue-700"
+			>
+			</span>
+			<button
+				onclick={() => (notes.showNotes = !notes.showNotes)}
+				class=" rounded-md bg-slate-700 px-2 py-1 text-sm transition-colors hover:bg-slate-600"
+			>
+				Notes
+			</button>
+		</div>
 	</div>
 
 	<div class="flex flex-row items-center space-x-1 md:space-x-4">

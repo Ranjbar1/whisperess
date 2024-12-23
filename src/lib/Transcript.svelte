@@ -3,6 +3,7 @@
 	import { transcript } from './hooks/transcriber.svelte';
 	import { formatAudioTimestamp } from './utils/AudioUtils';
 	import { exportJSON, exportTXT } from './utils/FileUtils';
+	import { notes } from './hooks/notes.svelte';
 
 	let transcribedData = $derived($transcript);
 
@@ -50,7 +51,15 @@
 	{/if}
 	{#if transcribedData && !transcribedData.isBusy}
 		<div class="flex w-full snap-end flex-row-reverse text-right">
-			{@render Button('Save as Note', () => {})}
+			{@render Button('Save as Note', () =>
+				notes.items.push({
+					content: text,
+					title: 'New Note',
+					id: Date.now(),
+					createdAt: Date.now().toString(),
+					updatedAt: Date.now().toString()
+				})
+			)}
 			{@render Button('Export TXT', () => exportTXT(text))}
 			{@render Button('Export JSON', () => exportJSON(transcribedData.chunks))}
 		</div>
