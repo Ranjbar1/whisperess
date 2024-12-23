@@ -7,7 +7,7 @@
 	<aside
 		transition:fly|global={{ x: -100, y: 0, duration: 300 }}
 		class:fixed={notes.showNotes}
-		class=" left-0 mt-16"
+		class=" left-0 z-10 mt-16"
 	>
 		<div class="flex min-h-screen w-screen flex-col gap-2 bg-slate-100 md:w-64">
 			<div class="flex flex-row items-center justify-between space-y-2 p-2">

@@ -1,20 +1,21 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import Tile from './Tile.svelte';
 	import RecordModal from './RecordModal.svelte';
+	import Tile from './Tile.svelte';
 	let props: {
 		icon: Snippet;
 		text: string;
 		setAudioData: (data: Blob) => void;
 	} = $props();
-	let showModal = $state(false);
+
+	let show = $state(false);
 
 	const onClick = () => {
-		showModal = true;
+		show = true;
 	};
 
 	const onClose = () => {
-		showModal = false;
+		show = false;
 	};
 
 	const onSubmit = (data: Blob | undefined) => {
@@ -26,4 +27,4 @@
 </script>
 
 <Tile icon={props.icon} text={props.text} {onClick} />
-<RecordModal show={showModal} {onSubmit} {onClose} />
+<RecordModal bind:show {onSubmit} {onClose} />

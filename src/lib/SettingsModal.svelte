@@ -9,9 +9,13 @@
 	import Modal from './Modal.svelte';
 	import { LANGUAGES, titleCase } from './utils/Constants';
 
-	let props: {
+	let {
+		show = $bindable<boolean>(),
+		onSubmit,
+		onClose
+	}: {
 		show: boolean;
-		onSubmit: (url: string) => void;
+		onSubmit: () => void;
 		onClose: () => void;
 	} = $props();
 	const names = Object.values(LANGUAGES).map(titleCase);
@@ -29,12 +33,7 @@
 	} as any;
 </script>
 
-<Modal
-	show={props.show}
-	title={'Settings'}
-	onClose={props.onClose}
-	onSubmit={() => {}}
->
+<Modal bind:show title={'Settings'} {onClose} {onSubmit}>
 	<label for="model">Select the model to use.</label>
 	<select
 		id="model"

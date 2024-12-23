@@ -7,22 +7,22 @@
 		icon: Snippet;
 		class?: string;
 	} = $props();
-	let showModal = $state(false);
+	let show = $state(false);
 
 	const onClick = () => {
-		showModal = true;
+		show = true;
 	};
 
 	const onClose = () => {
-		showModal = false;
+		show = false;
 	};
 
-	const onSubmit = (url: string) => {
+	const onSubmit = () => {
 		onClose();
 	};
 </script>
 
 <div class={props.class}>
 	<Tile icon={props.icon} {onClick} />
-	<SettingsModal show={showModal} {onSubmit} {onClose} />
+	<SettingsModal bind:show {onSubmit} {onClose} />
 </div>

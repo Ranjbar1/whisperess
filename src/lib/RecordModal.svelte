@@ -1,7 +1,11 @@
 <script lang="ts">
 	import AudioRecorder from './AudioRecorder.svelte';
 	import Modal from './Modal.svelte';
-	let props: {
+	let {
+		show = $bindable<boolean>(),
+		onSubmit,
+		onClose
+	}: {
 		show: boolean;
 		onSubmit: (data: Blob | undefined) => void;
 		onClose: () => void;
@@ -12,24 +16,24 @@
 		audioBlob = blob;
 	};
 
-	const onSubmit = () => {
-		props.onSubmit(audioBlob);
+	const handleSubmit = () => {
+		onSubmit(audioBlob);
 		audioBlob = undefined;
 	};
 
-	const onClose = () => {
-		props.onClose();
+	const handleClose = () => {
+		onClose();
 		audioBlob = undefined;
 	};
 </script>
 
 <Modal
-	show={props.show}
+	bind:show
 	title={'From Recording'}
-	{onClose}
+	onClose={handleClose}
 	submitText={'Load'}
 	submitEnabled={audioBlob !== undefined}
-	{onSubmit}
+	onSubmit={handleSubmit}
 >
 	{'Record audio using your microphone'}
 	<AudioRecorder {onRecordingComplete} />

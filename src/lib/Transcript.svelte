@@ -1,15 +1,12 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import Editor from './Editor.svelte';
 	import { transcript } from './hooks/transcriber.svelte';
 	import { formatAudioTimestamp } from './utils/AudioUtils';
-	import Modal from './Modal.svelte';
 	import { exportJSON, exportTXT } from './utils/FileUtils';
 
 	let transcribedData = $derived($transcript);
 
 	let view = $state<HTMLDivElement | null>(null);
-	let showEditor = $state(false);
 	let chunks = $derived(transcribedData?.chunks ?? []);
 	let text = $derived.by(() =>
 		chunks
@@ -25,7 +22,7 @@
 				view.offsetHeight + view.scrollTop - view.scrollHeight
 			);
 
-			if (chunks.length && diff <= 64) {
+			if (chunks.length && diff <= 100) {
 				// We're close enough to the bottom, so scroll to the bottom
 				view.scrollTop = view.scrollHeight;
 				view.scroll({
@@ -38,13 +35,13 @@
 
 <div
 	bind:this={view}
-	class="scrollbar my-2 flex max-h-[20rem] max-w-6xl flex-col overflow-y-auto p-4"
+	class="scrollbar flex max-h-[20rem] max-w-6xl snap-y scroll-py-[8px] flex-col space-y-[8px] overflow-y-auto p-4"
 >
 	{#if chunks}
 		{#each chunks as chunk}
 			<div
 				transition:fade|global
-				class="mb-2 flex w-full flex-row rounded-lg bg-white p-4 shadow-xl shadow-black/5 ring-1 ring-slate-700/10"
+				class=" flex snap-end flex-row rounded-lg bg-white p-4 shadow-sm shadow-black/5 ring-1 ring-slate-700/10 md:w-[40rem]"
 			>
 				<div class="mr-5">{formatAudioTimestamp(chunk.timestamp[0])}</div>
 				{chunk.text}
@@ -52,31 +49,13 @@
 		{/each}
 	{/if}
 	{#if transcribedData && !transcribedData.isBusy}
-		<div class="flex w-full flex-row-reverse text-right">
-			{@render Button('📝 Edit before export', () => {
-				showEditor = !showEditor;
-			})}
+		<div class="flex w-full snap-end flex-row-reverse text-right">
+			{@render Button('Save as Note', () => {})}
 			{@render Button('Export TXT', () => exportTXT(text))}
 			{@render Button('Export JSON', () => exportJSON(transcribedData.chunks))}
 		</div>
 	{/if}
 </div>
-<Modal
-	title="Edit transcript"
-	show={showEditor}
-	onClose={() => {
-		showEditor = false;
-	}}
-	submitEnabled={false}
-	onSubmit={() => {
-		showEditor = false;
-	}}
-	><div
-		class="container z-50 my-2 flex max-h-[20rem] flex-col overflow-y-auto p-4"
-	>
-		<Editor />
-	</div>
-</Modal>
 
 {#snippet Button(text: string, action: () => void)}
 	<button

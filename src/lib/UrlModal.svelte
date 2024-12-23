@@ -3,9 +3,13 @@
 	import UrlInput from './UrlInput.svelte';
 	import Constants from './utils/Constants';
 
-	let props: {
+	let {
+		show = $bindable<boolean>(),
+		onSubmit,
+		onClose
+	}: {
 		show: boolean;
-		onSubmit: (url: string) => void;
+		onSubmit: (url?: string) => void;
 		onClose: () => void;
 	} = $props();
 	let url = $state(Constants.DEFAULT_AUDIO_URL);
@@ -14,17 +18,17 @@
 		url = event.target.value;
 	};
 
-	const onSubmit = () => {
-		props.onSubmit(url);
+	const handleSubmit = () => {
+		onSubmit(url);
 	};
 </script>
 
 <Modal
-	show={props.show}
-	title={'From URL'}
-	onClose={props.onClose}
+	bind:show
+	title={'Import From URL'}
+	{onClose}
 	submitText={'Load'}
-	{onSubmit}
+	onSubmit={handleSubmit}
 >
 	Enter the URL of the audio file you want to load.<UrlInput
 		{onChange}

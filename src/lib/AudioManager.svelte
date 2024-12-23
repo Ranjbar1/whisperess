@@ -115,9 +115,9 @@
 </script>
 
 <div
-	class="flex flex-col items-center justify-center rounded-lg bg-white shadow-xl shadow-black/5 ring-1 ring-slate-700/10"
+	class="flex flex-col items-center justify-center rounded-s-lg rounded-se-lg bg-white shadow-xl shadow-black/5 ring-1 ring-slate-700/10"
 >
-	<div class="flex w-full flex-row space-x-2 px-2 py-2">
+	<div class="  flex w-full flex-row gap-2 p-2">
 		<UrlTile
 			icon={AnchorIcon}
 			text={'From URL'}
@@ -170,7 +170,7 @@
 		<SettingsTile class="absolute right-4" icon={SettingsIcon} />
 	</div>
 	{#if $progressItems.length > 0}
-		<div class="relative w-full space-y-2 p-4">
+		<div class="w-full space-y-2 p-4">
 			<span>Loading model files... (only run once)</span>
 			{#each $progressItems as data}
 				<div transition:fade|global>

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { fade, fly, scale } from 'svelte/transition';
+	import { scale } from 'svelte/transition';
 	import AudioManager from './lib/AudioManager.svelte';
+	import SideBar from './lib/SideBar.svelte';
 	import StatusBar from './lib/StatusBar.svelte';
 	import Transcript from './lib/Transcript.svelte';
-	import SideBar from './lib/SideBar.svelte';
 </script>
 
 <StatusBar />
@@ -16,7 +16,6 @@
 				class="text-center text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl"
 			>
 				Whisperess
-				<!-- <span class="animate-pulse">🎤</span> -->
 			</h1>
 			<h2
 				class="text-1xl mb-5 mt-3 px-4 text-center font-semibold tracking-tight text-slate-900 sm:text-2xl"
@@ -26,12 +25,5 @@
 			<AudioManager />
 			<Transcript />
 		</div>
-
-		<!-- <div class="absolute bottom-4">
-      Made with 
-      <a class="underline" href="https://github.com/xenova/transformers.js">
-        🤗 Transformers.js
-      </a>
-    </div> -->
 	</div>
 </main>

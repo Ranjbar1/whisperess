@@ -5,23 +5,23 @@
 	let props: {
 		icon: Snippet;
 		text: string;
-		onUrlUpdate: (url: string) => void;
+		onUrlUpdate: (url?: string) => void;
 	} = $props();
-	let showModal: boolean = $state(false);
+	let show: boolean = $state(false);
 
 	const onClick = () => {
-		showModal = true;
+		show = true;
 	};
 
 	const onClose = () => {
-		showModal = false;
+		show = false;
 	};
 
-	const onSubmit = (url: string) => {
+	const onSubmit = (url?: string) => {
 		props.onUrlUpdate(url);
 		onClose();
 	};
 </script>
 
 <Tile icon={props.icon} text={props.text} {onClick} />
-<UrlModal show={showModal} {onSubmit} {onClose} />
+<UrlModal bind:show {onSubmit} {onClose} />
