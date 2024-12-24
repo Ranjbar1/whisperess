@@ -9,9 +9,11 @@ export type Note = {
 export type Notes = {
 	items: Note[];
 	showNotes: boolean;
+	selectedNoteId ?: Note['id']
+
 };
 
 export const notes = $state<Notes>({
 	items: [],
-	showNotes: false
+	showNotes: false,
 });

@@ -17,10 +17,14 @@
 			waveColor: 'white',
 			progressColor: 'cyan',
 			barGap: 4,
+			barHeight: 0.6,
 			barWidth: 2,
+			autoScroll: true,
 			autoCenter: true,
 			barRadius: 3,
 			normalize: true,
+			height: 48,
+
 			url: props.audioUrl
 		});
 		wavesurfer.on('interaction', () => {
@@ -31,5 +35,5 @@
 
 <div
 	id="waveform"
-	class="relative w-96 rounded-md border-2 border-cyan-400 bg-slate-700 p-5"
+	class="relative w-80 rounded-md border-2 border-cyan-400 bg-slate-700 p-2"
 ></div>

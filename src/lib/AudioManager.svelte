@@ -115,7 +115,7 @@
 </script>
 
 <div
-	class="flex flex-col items-center justify-center rounded-s-lg rounded-se-lg bg-white shadow-xl shadow-black/5 ring-1 ring-slate-700/10"
+	class="flex flex-col items-center justify-center rounded-ss-lg rounded-se-lg bg-white shadow-xl shadow-black/5 ring-1 ring-slate-700/10"
 >
 	<div class="  flex w-full flex-row gap-2 p-2">
 		<UrlTile
@@ -160,9 +160,7 @@
 
 	<div class="relative flex w-full items-center justify-center">
 		<TranscribeButton
-			onclick={() => {
-				postRequest(audioData?.buffer);
-			}}
+			onclick={() => postRequest(audioData?.buffer)}
 			isModelLoading={$isModelLoading}
 			isTranscribing={$isBusy}
 		/>
