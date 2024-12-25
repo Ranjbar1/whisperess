@@ -24,13 +24,14 @@
 </script>
 
 {#if notes.showNotes}
+	<div class="fixed inset-0 mt-16 backdrop-blur-sm"></div>
 	<aside
 		transition:fly|global={{ x: -100, y: 0, duration: 300 }}
 		class:fixed={notes.showNotes}
 		class="left-0 z-10 mt-16"
 	>
 		<div
-			class="flex h-screen w-screen flex-col gap-2 bg-slate-100 md:w-96 overflow-y-auto scrollbar"
+			class="scrollbar flex h-screen w-screen flex-col gap-2 overflow-y-auto bg-slate-100 md:w-96"
 		>
 			<div class="flex flex-col items-center justify-between space-y-2 p-2">
 				{#each notes.items as note, index}
@@ -40,10 +41,10 @@
 						transition:fade|global
 						onclick={() => handleSelectNote(note.id)}
 						class:flex-1={Boolean(note.id === notes.selectedNoteId)}
-						class={`w-full h-28 cursor-pointer rounded-md border border-cyan-700 p-3 text-gray-700 transition-colors`}
+						class={`h-28 w-full cursor-pointer rounded-md border border-gray-600/40 px-2 py-1 text-gray-700 transition-colors`}
 					>
 						<div class="flex items-start justify-between">
-							<div class="flex items-start flex-col w-full gap-2">
+							<div class="flex w-full flex-col items-start gap-2">
 								<h3
 									contenteditable
 									bind:innerText={note.title}
@@ -55,7 +56,7 @@
 									contenteditable
 									class:truncate={!Boolean(note.id === notes.selectedNoteId)}
 									bind:innerText={note.content}
-									class="max-w-full outline-none focus:ring-2 rounded-md ring-cyan-300 px-2 py-4"
+									class=" max-w-full rounded-md border-gray-600/40 px-2 py-1"
 								>
 									{note.content}
 								</p>
@@ -67,14 +68,14 @@
 										(item) => item.id !== note.id
 									);
 								}}
-								class="text-red-500 hover:text-red-700 text-sm p-0"
+								class="p-0 text-sm text-red-500 hover:text-red-700"
 							>
 								×
 							</button>
 						</div>
 					</div>
 				{/each}
-				<div class="flex flex-col w-full h-36 gap-2 pb-2">
+				<div class="flex h-36 w-full flex-col gap-2 pb-2">
 					<button onclick={handleExportNotes}>Export Notes</button>
 					<button> Import Notes</button>
 				</div>

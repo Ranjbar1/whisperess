@@ -35,11 +35,6 @@ body {
 	height: 100vh;
 }
 
-/* h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-} */
-
 .card {
 	padding: 2em;
 }
@@ -88,9 +83,6 @@ button:focus-visible {
 	}
 }
 
-
-
-
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -102,4 +94,3 @@ button:focus-visible {
 		background-position: 0% 50%;
 	}
 }
-

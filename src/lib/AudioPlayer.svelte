@@ -35,5 +35,5 @@
 
 <div
 	id="waveform"
-	class="relative w-80 rounded-md border-2 border-cyan-400 bg-slate-700 p-2"
+	class="w-80 rounded-md border-2 border-cyan-400 bg-slate-700 p-2"
 ></div>
