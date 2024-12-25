@@ -14,6 +14,7 @@
 	} = $props();
 	let elem = document.createElement('input');
 	elem.type = 'file';
+	elem.accept = 'audio/* , video/*';
 	elem.oninput = (event) => {
 		// Make sure we have files to use
 		let files = (event.target as HTMLInputElement).files;

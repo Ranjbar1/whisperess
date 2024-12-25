@@ -48,7 +48,7 @@
 								<h3
 									contenteditable
 									bind:innerText={note.title}
-									class="font-medium"
+									class="px-2 font-medium"
 								>
 									{note.title}
 								</h3>
@@ -75,16 +75,14 @@
 						</div>
 					</div>
 				{/each}
-				<div class="flex h-36 w-full flex-col gap-2 pb-2">
-					<button onclick={handleExportNotes}>Export Notes</button>
-					<button> Import Notes</button>
+				<div class="flex h-36 w-full flex-col gap-2">
+					<button
+						class="hover:scale-10 bg-green-500 text-white"
+						onclick={handleExportNotes}>Export Notes</button
+					>
+					<button class="bg-gray-500 text-white"> Import Notes</button>
 				</div>
 			</div>
-			<!-- <div class="flex flex-col gap-2">
-				<div class="flex flex-col gap-2">
-					<div class="flex flex-row items-center justify-between"></div>
-				</div>
-			</div> -->
 		</div>
 	</aside>
 {/if}
