@@ -21,6 +21,43 @@
 		document.body.removeChild(a);
 		URL.revokeObjectURL(url);
 	};
+	const handleImportNotes = (event: any) => {
+		const file = event.target.files?.[0];
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				try {
+					const importedNotes = JSON.parse(e.target?.result as string);
+					if (
+						Array.isArray(importedNotes) &&
+						importedNotes.every(
+							(note) =>
+								typeof note === 'object' &&
+								'id' in note &&
+								'title' in note &&
+								'content' in note
+						)
+					) {
+						const now = Date.now();
+						const migratedNotes = importedNotes.map((note) => ({
+							...note,
+							tags: note.tags || [],
+							versions: note.versions || [],
+							created: note.created || now,
+							lastEdited: note.lastEdited || now
+						}));
+						notes.items.push(...migratedNotes);
+					} else {
+						alert('Invalid notes format');
+					}
+				} catch (error) {
+					console.error('Error importing notes:', error);
+					alert('Error importing notes');
+				}
+			};
+			reader.readAsText(file);
+		}
+	};
 </script>
 
 {#if notes.showNotes}
@@ -80,7 +117,18 @@
 						class="hover:scale-10 bg-green-500 text-white"
 						onclick={handleExportNotes}>Export Notes</button
 					>
-					<button class="bg-gray-500 text-white"> Import Notes</button>
+					<label
+						class="w-full cursor-pointer rounded-md bg-blue-500 px-4 py-2 text-center text-white transition-colors hover:bg-blue-600"
+					>
+						Import Notes
+						<input
+							type="file"
+							accept=".json"
+							onchange={handleImportNotes}
+							class="hidden"
+						/>
+					</label>
+					<!-- <button class="bg-gray-500 text-white"> Import Notes</button> -->
 				</div>
 			</div>
 		</div>
