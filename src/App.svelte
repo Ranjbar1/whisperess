@@ -13,7 +13,7 @@
 		<div class=" flex flex-col items-center justify-center gap-4">
 			<h1
 				transition:scale={{ duration: 500 }}
-				class="text-center text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl"
+				class="text-center text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl text-shadow"
 			>
 				Whisperess
 			</h1>

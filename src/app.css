@@ -12,11 +12,17 @@
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	--hue: 320; /* change me */
+    --bg: oklch(35% .3 var(--hue));
+    --text: oklch(85% .1 var(--hue));
+    --shadow: oklch(25% .2 var(--hue));
+    --highlight: oklch(98% .05 var(--hue));
 }
 
 a {
 	font-weight: 500;
-	color: #646cff;
+	color: #6366f1cc;
 	text-decoration: inherit;
 }
 a:hover {
@@ -55,12 +61,18 @@ button {
 	transition: border-color 0.25s;
 }
 button:hover {
-	border-color: #646cff;
+	border-color: #6366f1cc;
 }
 button:focus,
 button:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;
 }
+.text-shadow {
+	text-shadow: 0 2px 4px #6366f1cc
+}
+
+
+
 @layer utilities {
 	.scrollbar::-webkit-scrollbar {
 		width: 10px;

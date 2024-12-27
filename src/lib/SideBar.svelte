@@ -68,7 +68,7 @@
 		class="left-0 z-10 mt-16"
 	>
 		<div
-			class="scrollbar flex h-screen w-screen flex-col gap-2 overflow-y-auto bg-slate-100 md:w-96"
+			class="scrollbar flex h-screen w-screen flex-col gap-2 overflow-y-auto bg-slate-100"
 		>
 			<div class="flex flex-col items-center justify-between space-y-2 p-2">
 				{#each notes.items as note, index}

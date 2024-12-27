@@ -9,10 +9,10 @@
 </script>
 
 <header
-	class="absolute left-0 top-0 flex h-16 w-full flex-row items-center justify-between bg-slate-800 px-6 text-white md:px-10"
+	class="fixed left-0 top-0 flex h-16 w-full flex-row items-center justify-between bg-slate-800 px-6 text-white md:px-10"
 >
-	<div class="flex flex-row space-x-2">
-		<span>Whisperess</span>
+	<div class="flex flex-row space-x-10">
+		<strong class="text-xl text-shadow">Whisperess</strong>
 		<div class="relative">
 			<span
 				class=" absolute right-[-6px] top-[-2px] inline-block h-3 w-3 animate-bounce rounded-full bg-blue-700"
