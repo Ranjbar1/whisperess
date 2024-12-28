@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { notes, type Note } from './hooks/notes.svelte';
-	$effect(() => {
+	import { onMount } from 'svelte';
+	onMount(() => {
 		if (localStorage.getItem('notes') && !notes.items.length) {
 			notes.items = JSON.parse(localStorage.getItem('notes') as string);
 		}
