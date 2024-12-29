@@ -19,7 +19,7 @@
 		transcript,
 		type AudioData
 	} from './hooks/transcriber.svelte';
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 
 	let progress: number | undefined = $state(undefined);
 	let audioData: AudioData = $state(undefined);
@@ -114,53 +114,51 @@
 	});
 </script>
 
-<div
-	class="flex flex-col items-center justify-center rounded-ss-lg rounded-se-lg bg-white shadow-xl shadow-black/5 ring-1 ring-slate-700/10"
->
-	<div class="  flex w-full flex-row gap-2 p-2">
-		<UrlTile
-			icon={AnchorIcon}
-			text={'From URL'}
-			onUrlUpdate={(e) => {
-				onInputChange($transcript);
-				audioDownloadUrl = e;
-			}}
-		/>
-		<VerticalBar />
-		<FileTile
-			icon={FolderIcon}
-			text={'From file'}
-			onFileUpdate={(decoded, blobUrl, mimeType) => {
-				onInputChange($transcript);
-				audioData = {
-					buffer: decoded,
-					url: blobUrl,
-					source: AudioSource.FILE,
-					mimeType: mimeType
-				};
-			}}
-		/>
-		{#if navigator.mediaDevices}
-			<VerticalBar />
-			<RecordTile
-				icon={MicrophoneIcon}
-				text={'Record'}
-				setAudioData={(e) => {
-					onInputChange($transcript);
-					setAudioFromRecording(e);
-				}}
-			/>
-		{/if}
-	</div>
+<!-- class="flex flex-col items-center justify-center rounded-se-lg rounded-ss-lg bg-white shadow-xl shadow-black/5" -->
 
-	<AudioDataBar progress={isAudioLoading ? progress : +!!audioData} />
+<div class="flex w-full flex-row items-center justify-center gap-6 p-2">
+	<UrlTile
+		icon={AnchorIcon}
+		text={'From URL'}
+		onUrlUpdate={(e) => {
+			onInputChange($transcript);
+			audioDownloadUrl = e;
+		}}
+	/>
+	<!-- <VerticalBar /> -->
+	<FileTile
+		icon={FolderIcon}
+		text={'From file'}
+		onFileUpdate={(decoded, blobUrl, mimeType) => {
+			onInputChange($transcript);
+			audioData = {
+				buffer: decoded,
+				url: blobUrl,
+				source: AudioSource.FILE,
+				mimeType: mimeType
+			};
+		}}
+	/>
+	{#if navigator.mediaDevices}
+		<!-- <VerticalBar /> -->
+		<RecordTile
+			icon={MicrophoneIcon}
+			text={'Record'}
+			setAudioData={(e) => {
+				onInputChange($transcript);
+				setAudioFromRecording(e);
+			}}
+		/>
+	{/if}
 </div>
+<AudioDataBar progress={isAudioLoading ? progress : +!!audioData} />
+
 {#if audioData}
 	<AudioPlayer audioUrl={audioData.url} mimeType={audioData.mimeType} />
 
 	<div class="relative flex w-full items-center justify-center">
 		<TranscribeButton
-			onclick={() => postRequest(audioData?.buffer)}
+			onmousedown={() => postRequest(audioData?.buffer)}
 			isModelLoading={$isModelLoading}
 			isTranscribing={$isBusy}
 		/>

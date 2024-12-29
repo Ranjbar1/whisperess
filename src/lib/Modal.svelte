@@ -41,7 +41,7 @@
 		document.body.style.overflow = 'visible';
 		show = false;
 	}}
-	onclick={(e) => {
+	onmousedown={(e) => {
 		if (e.currentTarget !== e.target) return;
 		const rect = dialog.getBoundingClientRect();
 		const isBackdropClick =
@@ -74,7 +74,7 @@
 								? 'hover:bg-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2'
 								: ''
 						} transition-all duration-300`}
-						onclick={() => onSubmit()}
+						onmousedown={() => onSubmit()}
 					>
 						{submitText}
 					</button>
@@ -83,7 +83,7 @@
 				<button
 					type="button"
 					class="inline-flex justify-center rounded-md border border-transparent bg-indigo-100 px-4 py-2 text-sm font-medium text-indigo-900 transition-all duration-300 hover:bg-indigo-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-					onclick={onClose}
+					onmousedown={onClose}
 				>
 					Close
 				</button>

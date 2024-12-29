@@ -126,7 +126,7 @@
 				? 'bg-red-500 hover:bg-red-600'
 				: 'bg-green-500 hover:bg-green-600'
 		}`}
-		onclick={handleToggleRecording}
+		onmousedown={handleToggleRecording}
 	>
 		{recording
 			? `Stop Recording (${formatAudioTimestamp(duration)})`

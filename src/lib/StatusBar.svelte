@@ -12,14 +12,14 @@
 	class="fixed left-0 top-0 flex h-16 w-full flex-row items-center justify-between bg-slate-800 px-6 text-white md:px-10"
 >
 	<div class="flex flex-row space-x-10">
-		<strong class="text-xl text-shadow">Whisperess</strong>
+		<strong class="text-shadow text-xl">Whisperess</strong>
 		<div class="relative">
 			<span
 				class=" absolute right-[-6px] top-[-2px] inline-block h-3 w-3 animate-bounce rounded-full bg-blue-700"
 			>
 			</span>
 			<button
-				onclick={() => (notes.showNotes = !notes.showNotes)}
+				onmousedown={() => (notes.showNotes = !notes.showNotes)}
 				class=" rounded-md bg-slate-700 px-2 py-1 text-sm transition-colors hover:bg-slate-600"
 			>
 				Notes

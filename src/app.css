@@ -14,10 +14,10 @@
 	-moz-osx-font-smoothing: grayscale;
 
 	--hue: 320; /* change me */
-    --bg: oklch(35% .3 var(--hue));
-    --text: oklch(85% .1 var(--hue));
-    --shadow: oklch(25% .2 var(--hue));
-    --highlight: oklch(98% .05 var(--hue));
+	--bg: oklch(35% 0.3 var(--hue));
+	--text: oklch(85% 0.1 var(--hue));
+	--shadow: oklch(25% 0.2 var(--hue));
+	--highlight: oklch(98% 0.05 var(--hue));
 }
 
 a {
@@ -63,15 +63,9 @@ button {
 button:hover {
 	border-color: #6366f1cc;
 }
-button:focus,
-button:focus-visible {
-	outline: 4px auto -webkit-focus-ring-color;
-}
 .text-shadow {
-	text-shadow: 0 2px 4px #6366f1cc
+	text-shadow: 0 2px 4px #6366f1cc;
 }
-
-
 
 @layer utilities {
 	.scrollbar::-webkit-scrollbar {

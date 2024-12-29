@@ -68,7 +68,7 @@
 
 {#snippet Button(text: string, action: () => void)}
 	<button
-		onclick={action}
+		onmousedown={action}
 		class="mr-2 inline-flex items-center rounded-lg bg-green-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-green-600 focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
 	>
 		{text}

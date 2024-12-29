@@ -100,13 +100,13 @@
 						</div>
 						<div>
 							<button
-								onclick={() => handleSelectNote(note.id)}
+								onmousedown={() => handleSelectNote(note.id)}
 								class="p-0 text-sm text-red-500 hover:text-red-700"
 							>
 								✏️</button
 							>
 							<button
-								onclick={(e) => {
+								onmousedown={(e) => {
 									e.stopPropagation();
 									notes.items = notes.items.filter(
 										(item) => item.id !== note.id
@@ -123,11 +123,11 @@
 			<div class="flex h-36 w-1/4 flex-col gap-2">
 				<button
 					class="hover:scale-10 bg-green-500 text-white"
-					onclick={handleSaveNotes}>Save Notes</button
+					onmousedown={handleSaveNotes}>Save Notes</button
 				>
 				<button
 					class="hover:scale-10 bg-purple-700 text-white"
-					onclick={handleExportNotes}>Export Notes</button
+					onmousedown={handleExportNotes}>Export Notes</button
 				>
 				<label
 					class="w-full cursor-pointer rounded-md bg-blue-500 px-4 py-2 text-center text-white transition-colors hover:bg-blue-600"
