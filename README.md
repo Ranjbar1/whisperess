@@ -1,4 +1,27 @@
-# Whisperesso (online ML powered Audio Transcription in your browser)
+# Whisperess (online ML powered Audio Transcription in your browser)
+
+<!-- embed link to video here -->
+
+## Overview
+
+Whisperess is an innovative web application that transcribes audio in real-time using the OpenAI Whisper model. It offers a user-friendly interface for transcribing audio files and videos, making it a versatile tool for note-taking, transcription, and collaboration.
+
+## Demo
+
+![Whisperess Demo](https://vimeo.com/1043243704?share=copy)
+
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/1043243704?h=0d3b85c71d" width="640" height="360" frameborder="0"    allowfullscreen></iframe>
+
+## Features
+
+- Real-time transcription of audio in your browser
+- Transcription powered by OpenAI Whisper model Locally on your device (no data sent to the server)
+- Versatile: supports both microphone and file input for videos and audio files (mp3, mp4, m4a, wav, webm)
+- Customizable: adjust transcription settings and language
+- User-friendly: intuitive interface for easy navigation and interaction
+- Note taking: save transcripts and notes for future reference and collaboration
+- Export: export transcripts and notes to various formats (Txt , JSON)
+- Installable: install the app as PWA on any device for a seamless experience
 
 Try the demo at [https://whisperess.vercel.app/](https://whisperess.vercel.app/)
 
