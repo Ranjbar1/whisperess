@@ -70,9 +70,11 @@
 	<aside
 		transition:fly|global={{ x: -100, y: 0, duration: 500 }}
 		class:fixed={notes.showNotes}
-		class="scrollbar left-0 z-10 mt-16 flex h-screen w-screen flex-col gap-2 overflow-y-auto bg-slate-100"
+		class="scrollbar left-0 top-16 z-10 flex h-screen w-screen snap-y scroll-py-[8px] flex-col gap-2 overflow-y-auto scroll-smooth bg-slate-100"
 	>
-		<div class="container mx-auto flex flex-col gap-2 p-2 md:flex-row">
+		<div
+			class="container mx-auto flex snap-start flex-col gap-2 p-2 md:flex-row"
+		>
 			<button
 				class="hover:scale-10 bg-green-500 text-white"
 				onmousedown={handleSaveNotes}>Save Notes</button
@@ -94,9 +96,9 @@
 			</label>
 		</div>
 		<div
-			class="container mx-auto grid grid-cols-1 grid-rows-[repeat(1fr)] gap-2 p-2 md:grid-cols-2"
+			class="container mx-auto grid snap-start grid-cols-1 grid-rows-[repeat(1fr)] gap-2 p-2 md:grid-cols-2"
 		>
-			{#each notes.items as note (note.createdAt)}
+			{#each notes.items.sort((a, b) => b.id - a.id) as note (note.createdAt)}
 				<div
 					transition:fade|global
 					class:flex-1={Boolean(note.id === notes.selectedNoteId)}
@@ -107,13 +109,16 @@
 							<h3
 								contenteditable
 								bind:innerText={note.title}
+								onfocusout={() => (note.updatedAt = Date.now())}
 								class="flex-1 rounded-md px-2 text-start font-semibold outline-none transition-colors focus:bg-slate-50 focus:text-blue-600"
 							>
 								{note.title}
 							</h3>
 
 							<button
-								onmousedown={() => handleSelectNote(note.id)}
+								onmousedown={() => {
+									handleSelectNote(note.id);
+								}}
 								class="p-1 text-sm"
 							>
 								✏️</button

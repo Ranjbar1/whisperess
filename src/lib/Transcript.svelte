@@ -36,7 +36,7 @@
 
 <div
 	bind:this={view}
-	class="scrollbar flex max-h-[20rem] max-w-6xl snap-y scroll-py-[8px] flex-col space-y-[8px] overflow-y-auto p-4"
+	class="scrollbar mt-2 flex max-h-[20rem] max-w-6xl snap-y scroll-py-[8px] flex-col space-y-[8px] overflow-y-auto p-4"
 >
 	{#if chunks}
 		{#each chunks as chunk}
@@ -49,22 +49,22 @@
 			</div>
 		{/each}
 	{/if}
-	{#if transcribedData && !transcribedData.isBusy}
-		<div class="flex w-full snap-end flex-row-reverse text-right">
-			{@render Button('Save as Note', () =>
-				notes.items.push({
-					content: text,
-					title: 'New Note',
-					id: Date.now(),
-					createdAt: Date.now().toString(),
-					updatedAt: Date.now().toString()
-				})
-			)}
-			{@render Button('Export TXT', () => exportTXT(text))}
-			{@render Button('Export JSON', () => exportJSON(transcribedData.chunks))}
-		</div>
-	{/if}
 </div>
+{#if transcribedData && !transcribedData.isBusy}
+	<div in:fade class="flex w-full snap-end flex-row-reverse text-right">
+		{@render Button('Save as Note', () =>
+			notes.items.push({
+				content: text,
+				title: 'New Note',
+				id: Date.now(),
+				createdAt: Date.now(),
+				updatedAt: Date.now()
+			})
+		)}
+		{@render Button('Export TXT', () => exportTXT(text))}
+		{@render Button('Export JSON', () => exportJSON(transcribedData.chunks))}
+	</div>
+{/if}
 
 {#snippet Button(text: string, action: () => void)}
 	<button

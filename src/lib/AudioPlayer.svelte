@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import WaveSurfer from 'wavesurfer.js';
 
 	let props: {
@@ -34,6 +35,7 @@
 </script>
 
 <div
+	transition:fade={{ delay: 100, duration: 400 }}
 	id="waveform"
 	class="w-80 rounded-md border-2 border-cyan-400 bg-slate-700 p-2"
 ></div>

@@ -125,7 +125,7 @@
 			audioDownloadUrl = e;
 		}}
 	/>
-	<!-- <VerticalBar /> -->
+
 	<FileTile
 		icon={FolderIcon}
 		text={'From file'}
@@ -140,7 +140,6 @@
 		}}
 	/>
 	{#if navigator.mediaDevices}
-		<!-- <VerticalBar /> -->
 		<RecordTile
 			icon={MicrophoneIcon}
 			text={'Record'}
@@ -163,12 +162,12 @@
 			isTranscribing={$isBusy}
 		/>
 
-		<SettingsTile class="absolute right-4" icon={SettingsIcon} />
+		<SettingsTile class="absolute right-2 scale-75" icon={SettingsIcon} />
 	</div>
 	{#if $progressItems.length > 0}
 		<div class="w-full space-y-2 p-4">
 			<span>Loading model files... (only run once)</span>
-			{#each $progressItems as data}
+			{#each $progressItems as data (data.file)}
 				<div transition:fade|global>
 					<Progress text={data.file} percentage={data.progress} />
 				</div>
@@ -227,7 +226,4 @@
 			d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
 		/>
 	</svg>
-{/snippet}
-{#snippet VerticalBar()}
-	<div class="w-[1px] bg-slate-200"></div>
 {/snippet}
