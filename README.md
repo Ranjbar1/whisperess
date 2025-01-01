@@ -8,14 +8,7 @@ Whisperess is an innovative web application that transcribes audio in real-time 
 
 ## Demo
 
-<!-- ![Whisperess Demo](https://vimeo.com/1043243704?share=copy) -->
-
-[![Whisperess Demo](https://img.youtube.com/vi/video-id/0.jpg)](https://player.vimeo.com/video/1043243704?h=0d3b85c71d)
-
-<video src="https://player.vimeo.com/video/1043243704?h=0d3b85c71d" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></video>
-
-<iframe src="https://player.vimeo.com/video/1043243704?h=0d3b85c71d" width="480" height="360" frameBorder="640" class="giphy-embed" allowFullScreen></iframe>
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/1043243704?h=0d3b85c71d" width="640" height="360" frameborder="0"    allowfullscreen></iframe>
+[![Whisperess Demo](/public/screenshots/screen-sm-4.png)](https://player.vimeo.com/video/1043243704?h=0d3b85c71d)
 
 ## Features
 
