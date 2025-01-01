@@ -4,4 +4,5 @@
 	let { progress }: { progress?: number } = $props();
 </script>
 
+
 <ProgressBar progress={`${Math.round(Number(progress) * 100)}%`} />

@@ -11,8 +11,8 @@
 <header
 	class="fixed left-0 top-0 flex h-16 w-full flex-row items-center justify-between bg-slate-800 px-6 text-white md:px-10"
 >
-	<div class="flex flex-row space-x-10">
-		<strong class="text-shadow text-xl">Whisperess</strong>
+	<div class="flex flex-row sm:space-x-10">
+		<strong class="text-shadow hidden text-xl sm:block">Whisperess</strong>
 		<div class="relative">
 			<span
 				class=" absolute right-[-6px] top-[-2px] inline-block h-3 w-3 animate-bounce rounded-full bg-blue-700"

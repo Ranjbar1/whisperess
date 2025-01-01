@@ -2,6 +2,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { notes, type Note } from './hooks/notes.svelte';
 	import { onMount } from 'svelte';
+	import { exportTXT } from './utils/FileUtils';
 	onMount(() => {
 		if (localStorage.getItem('notes') && !notes.items.length) {
 			notes.items = JSON.parse(localStorage.getItem('notes') as string);
@@ -69,41 +70,59 @@
 	<aside
 		transition:fly|global={{ x: -100, y: 0, duration: 500 }}
 		class:fixed={notes.showNotes}
-		class="scrollbar left-0 z-10 mt-16 h-screen w-screen overflow-y-auto bg-slate-100"
+		class="scrollbar left-0 z-10 mt-16 flex h-screen w-screen flex-col gap-2 overflow-y-auto bg-slate-100"
 	>
+		<div class="container mx-auto flex flex-col gap-2 p-2 md:flex-row">
+			<button
+				class="hover:scale-10 bg-green-500 text-white"
+				onmousedown={handleSaveNotes}>Save Notes</button
+			>
+			<button
+				class="hover:scale-10 bg-purple-700 text-white"
+				onmousedown={handleExportNotes}>Export Notes</button
+			>
+			<label
+				class="cursor-pointer rounded-md bg-blue-500 px-4 py-2 text-center font-semibold text-white transition-colors hover:bg-blue-600"
+			>
+				Import Notes
+				<input
+					type="file"
+					accept=".json"
+					onchange={handleImportNotes}
+					class="hidden"
+				/>
+			</label>
+		</div>
 		<div
-			class="container mx-auto grid grid-cols-2 grid-rows-[repeat(1fr)] gap-2"
+			class="container mx-auto grid grid-cols-1 grid-rows-[repeat(1fr)] gap-2 p-2 md:grid-cols-2"
 		>
-			{#each notes.items as note, index}
+			{#each notes.items as note (note.createdAt)}
 				<div
 					transition:fade|global
 					class:flex-1={Boolean(note.id === notes.selectedNoteId)}
-					class={` w-full cursor-pointer rounded-md border border-gray-600/40 px-2 py-1 text-gray-700 transition-colors`}
+					class="w-full cursor-pointer rounded-md border border-gray-600/40 px-2 py-1 text-gray-700 focus-within:bg-gray-200 hover:bg-gray-200"
 				>
-					<div class="">
-						<div class="flex w-full flex-col items-start gap-2">
+					<div class="flex w-full flex-col items-start gap-2">
+						<div class="flex w-full items-center gap-2">
 							<h3
 								contenteditable
 								bind:innerText={note.title}
-								class="px-2 font-medium"
+								class="flex-1 rounded-md px-2 text-start font-semibold outline-none transition-colors focus:bg-slate-50 focus:text-blue-600"
 							>
 								{note.title}
 							</h3>
-							<p
-								contenteditable
-								class:truncate={!Boolean(note.id === notes.selectedNoteId)}
-								bind:innerText={note.content}
-								class=" max-w-full rounded-md border-gray-600/40 px-2 py-1"
-							>
-								{note.content}
-							</p>
-						</div>
-						<div>
+
 							<button
 								onmousedown={() => handleSelectNote(note.id)}
-								class="p-0 text-sm text-red-500 hover:text-red-700"
+								class="p-1 text-sm"
 							>
 								✏️</button
+							>
+							<button
+								onmousedown={() => exportTXT(note.content)}
+								class="p-1 text-sm"
+							>
+								💾</button
 							>
 							<button
 								onmousedown={(e) => {
@@ -112,35 +131,23 @@
 										(item) => item.id !== note.id
 									);
 								}}
-								class="p-0 text-sm text-red-500 hover:text-red-700"
+								class="p-1 text-sm"
 							>
-								×
+								❌
 							</button>
 						</div>
+
+						<p
+							contenteditable
+							class:truncate={!Boolean(note.id === notes.selectedNoteId)}
+							bind:innerText={note.content}
+							class=" max-w-full rounded-md px-2 py-1 outline-none transition-colors focus:bg-slate-50 focus:text-blue-600"
+						>
+							{note.content}
+						</p>
 					</div>
 				</div>
 			{/each}
-			<div class="flex h-36 w-1/4 flex-col gap-2">
-				<button
-					class="hover:scale-10 bg-green-500 text-white"
-					onmousedown={handleSaveNotes}>Save Notes</button
-				>
-				<button
-					class="hover:scale-10 bg-purple-700 text-white"
-					onmousedown={handleExportNotes}>Export Notes</button
-				>
-				<label
-					class="w-full cursor-pointer rounded-md bg-blue-500 px-4 py-2 text-center text-white transition-colors hover:bg-blue-600"
-				>
-					Import Notes
-					<input
-						type="file"
-						accept=".json"
-						onchange={handleImportNotes}
-						class="hidden"
-					/>
-				</label>
-			</div>
 		</div>
 	</aside>
 {/if}
